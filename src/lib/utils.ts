@@ -13,18 +13,17 @@ export function generateAvatar(name: string, gender: "MALE" | "FEMALE") {
   return `${base}/boy?username=${username}`;
 }
 
-// phone formatting function for US numbers - ai generated 🎉
+// phone formatting function for Indian numbers
 export const formatPhoneNumber = (value: string) => {
   if (!value) return value;
 
-  const phoneNumber = value.replace(/[^\d]/g, "");
-  const phoneNumberLength = phoneNumber.length;
+  const digits = value.replace(/[^\d]/g, "");
 
-  if (phoneNumberLength < 4) return phoneNumber;
-  if (phoneNumberLength < 7) {
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+  if (digits.length !== 10) {
+    return value;
   }
-  return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+
+  return `${digits.slice(0, 5)} ${digits.slice(5)}`;
 };
 
 //  ai generated 🎉
@@ -60,8 +59,18 @@ export const getAvailableTimeSlots = () => {
 };
 
 export const APPOINTMENT_TYPES = [
-  { id: "checkup", name: "Regular Checkup", duration: "60 min", price: "$120" },
-  { id: "cleaning", name: "Teeth Cleaning", duration: "45 min", price: "$90" },
-  { id: "consultation", name: "Consultation", duration: "30 min", price: "$75" },
-  { id: "emergency", name: "Emergency Visit", duration: "30 min", price: "$150" },
+  { id: "checkup", name: "Regular Checkup", duration: "60 min", price: "Rs. 1200" },
+  { id: "cleaning", name: "Teeth Cleaning", duration: "45 min", price: "Rs. 900" },
+  {
+    id: "consultation",
+    name: "Consultation",
+    duration: "30 min",
+    price: "Rs 750",
+  },
+  {
+    id: "emergency",
+    name: "Emergency Visit",
+    duration: "30 min",
+    price: "Rs. 1500",
+  },
 ];
