@@ -15,6 +15,10 @@ export default async function Home() {
   // the best way of syncing => webhooks
   await syncUser();
 
+  if (user?.emailAddresses[0]?.emailAddress === process.env.ADMIN_EMAIL) {
+    redirect("/admin");
+  }
+
   // redirect auth user to dashboard
   if (user) redirect("/dashboard");
 
