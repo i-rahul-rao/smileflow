@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     // do not use this in prod, only for testing purposes
     const { data, error } = await resend.emails.send({
       from: "SmileFlow <no-reply@resend.dev>",
-      to: [userEmail],
+      to: ["rk8397971446@gmail.com"], // test email, replace with userEmail in prod
       subject: "Appointment Confirmation - SmileFlow",
       react: AppointmentConfirmationEmail({
         doctorName,
