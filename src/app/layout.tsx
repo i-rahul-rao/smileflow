@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import UserSync from "@/components/UserSync";
 import TanStackProvider from "@/components/providers/TanStackProvider";
 import { Toaster } from "sonner";
+import { shadcn } from "@clerk/themes";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -33,13 +33,7 @@ export default function RootLayout({
     <TanStackProvider>
       <ClerkProvider
         appearance={{
-          variables: {
-            colorPrimary: "#34d399",
-            colorBackground: "#f3f4f6",
-            colorText: "#111827",
-            colorTextSecondary: "#6b7280",
-            colorInputBackground: "#f3f4f6",
-          },
+          theme: shadcn,
         }}
       >
         <html lang="en">
