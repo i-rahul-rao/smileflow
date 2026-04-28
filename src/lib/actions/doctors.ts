@@ -1,6 +1,6 @@
 "use server";
 
-import { Gender } from "@prisma/client";
+import { Gender } from "../../../generated/prisma";
 import { prisma } from "../prisma";
 import { generateAvatar } from "../utils";
 import { revalidatePath } from "next/cache";

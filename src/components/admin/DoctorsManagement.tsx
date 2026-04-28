@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Badge } from "../ui/badge";
 import AddDoctorDialog from "./AddDoctorDialog";
 import EditDoctorDialog from "./EditDoctorDialog";
-import { Doctor } from "@prisma/client";
+import { Doctor } from "../../../generated/prisma";
 
 function DoctorsManagement() {
   const { data: doctors = [] } = useGetDoctors();
@@ -52,7 +52,7 @@ function DoctorsManagement() {
             {doctors.map((doctor) => (
               <div
                 key={doctor.id}
-                className="flex items-center justify-between p-4 bg-muted/30 rounded-xl border border-border/50"
+                className="flex items-center justify-between p-4 border bg-muted/30 rounded-xl border-border/50"
               >
                 <div className="flex items-center gap-4">
                   <Image
@@ -60,7 +60,7 @@ function DoctorsManagement() {
                     alt={doctor.name}
                     width={48}
                     height={48}
-                    className="size-12 rounded-full object-cover ring-2 ring-background"
+                    className="object-cover rounded-full size-12 ring-2 ring-background"
                   />
 
                   <div>
@@ -75,11 +75,11 @@ function DoctorsManagement() {
 
                     <div className="flex items-center gap-4 mt-1">
                       <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <MailIcon className="h-3 w-3" />
+                        <MailIcon className="w-3 h-3" />
                         {doctor.email}
                       </div>
                       <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <PhoneIcon className="h-3 w-3" />
+                        <PhoneIcon className="w-3 h-3" />
                         {doctor.phone}
                       </div>
                     </div>
@@ -93,7 +93,7 @@ function DoctorsManagement() {
                   </div>
 
                   {doctor.isActive ? (
-                    <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Active</Badge>
+                    <Badge className="text-green-800 bg-green-100 hover:bg-green-100">Active</Badge>
                   ) : (
                     <Badge variant="secondary">Inactive</Badge>
                   )}
@@ -103,7 +103,7 @@ function DoctorsManagement() {
                     className="h-8 px-3"
                     onClick={() => handleEditDoctor(doctor)}
                   >
-                    <EditIcon className="size-4 mr-1" />
+                    <EditIcon className="mr-1 size-4" />
                     Edit
                   </Button>
                 </div>

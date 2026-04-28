@@ -2,7 +2,7 @@
 
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "../prisma";
-import { AppointmentStatus } from "@prisma/client";
+import { AppointmentStatus } from "../../../generated/prisma";
 
 function transformAppointment(appointment: any) {
   return {
